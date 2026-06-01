@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SafeHer — Women Safety</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --rose:#C1344A;--rose-light:#F9E6EA;--rose-dark:#8B1D30;
+    --cream:#FDF8F4;--ink:#1A1018;--muted:#6B5B65;
+    --accent:#E8734A;--pale:#F3EDF0;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 5%;border-bottom:1px solid rgba(193,52,74,0.12);background:var(--cream);position:sticky;top:0;z-index:100}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--rose);letter-spacing:-0.02em}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-size:0.875rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+  .nav-links a:hover{color:var(--rose)}
+  .nav-sos{background:var(--rose);color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:500;cursor:pointer;transition:background 0.2s}
+  .nav-sos:hover{background:var(--rose-dark)}
+
+  /* HERO */
+  .hero{padding:5rem 5% 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--rose-light);color:var(--rose);font-size:0.75rem;font-weight:500;padding:0.35rem 0.9rem;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem}
+  .hero-tag::before{content:'';width:6px;height:6px;background:var(--rose);border-radius:50%;animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+  h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,4vw,3.75rem);line-height:1.1;color:var(--ink);letter-spacing:-0.03em;margin-bottom:1.25rem}
+  h1 em{font-style:italic;color:var(--rose)}
+  .hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:420px;margin-bottom:2rem}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-primary{background:var(--rose);color:#fff;border:none;padding:0.8rem 1.8rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-primary:hover{background:var(--rose-dark);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--rose);border:1.5px solid var(--rose);padding:0.8rem 1.8rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-ghost:hover{background:var(--rose-light);transform:translateY(-2px)}
+
+  /* HERO CARD */
+  .hero-card{background:#fff;border-radius:24px;padding:2rem;border:1px solid rgba(193,52,74,0.1);box-shadow:0 20px 60px rgba(193,52,74,0.08);position:relative;overflow:hidden}
+  .hero-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--rose-light);border-radius:50%;opacity:0.5}
+  .sos-big{background:var(--rose);color:#fff;border:none;width:120px;height:120px;border-radius:50%;font-family:'DM Serif Display',serif;font-size:2rem;cursor:pointer;margin:0 auto 1.5rem;display:block;position:relative;z-index:1;box-shadow:0 0 0 0 rgba(193,52,74,0.4);animation:sosPulse 2s infinite;transition:transform 0.15s}
+  .sos-big:hover{transform:scale(1.06)}
+  .sos-big:active{transform:scale(0.96)}
+  @keyframes sosPulse{0%{box-shadow:0 0 0 0 rgba(193,52,74,0.4)}70%{box-shadow:0 0 0 20px rgba(193,52,74,0)}100%{box-shadow:0 0 0 0 rgba(193,52,74,0)}}
+  .sos-label{text-align:center;font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem;position:relative;z-index:1}
+  .quick-contacts{position:relative;z-index:1}
+  .quick-contacts h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.75rem}
+  .contact-row{display:flex;align-items:center;gap:12px;padding:0.6rem 0;border-bottom:1px solid var(--pale)}
+  .contact-row:last-child{border-bottom:none}
+  .contact-avatar{width:36px;height:36px;border-radius:50%;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+  .contact-name{font-size:0.875rem;font-weight:500;color:var(--ink);flex:1}
+  .contact-call{background:var(--rose-light);color:var(--rose);border:none;padding:0.3rem 0.75rem;border-radius:100px;font-size:0.75rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+  /* FEATURES */
+  .section{padding:4rem 5%;max-width:1200px;margin:0 auto}
+  .section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose);font-weight:500;margin-bottom:0.5rem}
+  .section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);color:var(--ink);margin-bottom:0.75rem;letter-spacing:-0.02em}
+  .section-sub{color:var(--muted);font-size:1rem;line-height:1.7;max-width:480px;margin-bottom:2.5rem}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+  .feature-card{background:#fff;border-radius:20px;padding:1.75rem;border:1px solid rgba(193,52,74,0.08);transition:all 0.25s;cursor:default}
+  .feature-card:hover{border-color:rgba(193,52,74,0.25);transform:translateY(-4px);box-shadow:0 12px 40px rgba(193,52,74,0.08)}
+  .feat-icon{width:48px;height:48px;border-radius:14px;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+  .feat-title{font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem}
+  .feat-desc{font-size:0.875rem;color:var(--muted);line-height:1.65}
+
+  /* HELPLINE */
+  .helpline-section{background:var(--pale);padding:4rem 5%;margin:2rem 0}
+  .helpline-inner{max-width:1200px;margin:0 auto}
+  .helpline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+  .helpline-card{background:#fff;border-radius:16px;padding:1.25rem 1.5rem;border:1px solid rgba(193,52,74,0.1);display:flex;align-items:center;gap:14px}
+  .helpline-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--rose)}
+  .helpline-info h5{font-size:0.875rem;font-weight:500;color:var(--ink)}
+  .helpline-info p{font-size:0.75rem;color:var(--muted);margin-top:2px}
+  .call-btn{margin-left:auto;background:var(--rose);color:#fff;border:none;padding:0.4rem 1rem;border-radius:100px;font-size:0.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;white-space:nowrap}
+  .call-btn:hover{background:var(--rose-dark)}
+
+  /* TIPS */
+  .tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+  .tip-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--pale)}
+  .tip-item:last-child{border-bottom:none}
+  .tip-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--rose-light);line-height:1;min-width:32px}
+  .tip-text h5{font-size:0.9rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+  .tip-text p{font-size:0.825rem;color:var(--muted);line-height:1.6}
+  .tips-visual{background:var(--rose);border-radius:24px;padding:2.5rem;color:#fff;position:relative;overflow:hidden}
+  .tips-visual::after{content:'';position:absolute;bottom:-40px;right:-40px;width:180px;height:180px;background:rgba(255,255,255,0.08);border-radius:50%}
+  .tips-visual h3{font-family:'DM Serif Display',serif;font-size:1.75rem;margin-bottom:1rem;line-height:1.2}
+  .tips-visual p{font-size:0.9rem;opacity:0.85;line-height:1.7;margin-bottom:1.5rem}
+  .tips-stat{display:flex;gap:2rem;flex-wrap:wrap}
+  .stat-item .num{font-family:'DM Serif Display',serif;font-size:2rem}
+  .stat-item .lbl{font-size:0.75rem;opacity:0.7;letter-spacing:0.04em;text-transform:uppercase}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#fff;padding:3rem 5%;text-align:center}
+  footer .logo{color:var(--rose-light);margin-bottom:0.5rem;display:block}
+  footer p{font-size:0.8rem;opacity:0.5;margin-top:0.5rem}
+
+  /* SOS MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,16,24,0.7);z-index:999;align-items:center;justify-content:center}
+  .modal-overlay.open{display:flex}
+  .modal{background:#fff;border-radius:24px;padding:2.5rem;max-width:400px;width:90%;text-align:center;animation:modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+  @keyframes modalIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+  .modal h2{font-family:'DM Serif Display',serif;font-size:1.75rem;color:var(--rose);margin-bottom:0.5rem}
+  .modal p{font-size:0.9rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+  .modal-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .modal-close{background:var(--pale);color:var(--ink);border:none;padding:0.6rem 1.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.875rem;cursor:pointer}
+
+  /* CHATBOT */
+  .chat-fab{position:fixed;bottom:2rem;right:2rem;width:60px;height:60px;border-radius:50%;background:var(--rose);color:#fff;border:none;font-size:1.6rem;cursor:pointer;z-index:200;box-shadow:0 4px 20px rgba(193,52,74,0.35);transition:transform 0.2s}
+  .chat-fab:hover{transform:scale(1.1)}
+  .chat-window{position:fixed;bottom:6.5rem;right:2rem;width:340px;max-height:520px;background:#fff;border-radius:20px;border:1px solid rgba(193,52,74,0.15);box-shadow:0 20px 60px rgba(0,0,0,0.12);z-index:200;display:none;flex-direction:column;overflow:hidden;animation:slideUp 0.25s ease}
+  .chat-window.open{display:flex}
+  @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .chat-header{background:var(--rose);color:#fff;padding:1rem 1.25rem;display:flex;align-items:center;gap:10px}
+  .chat-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+  .chat-header-info h4{font-size:0.9rem;font-weight:500;margin:0}
+  .chat-header-info p{font-size:0.72rem;opacity:0.8;margin:0}
+  .chat-close{margin-left:auto;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;opacity:0.8}
+  .chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:10px;max-height:340px}
+  .msg{max-width:80%;padding:0.6rem 0.9rem;border-radius:14px;font-size:0.85rem;line-height:1.5}
+  .msg.bot{background:var(--pale);color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+  .msg.user{background:var(--rose);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+  .msg.typing{background:var(--pale);align-self:flex-start;padding:0.6rem 1rem}
+  .dot{display:inline-block;width:6px;height:6px;background:var(--muted);border-radius:50%;margin:0 2px;animation:dotBounce 1.2s infinite}
+  .dot:nth-child(2){animation-delay:0.2s}.dot:nth-child(3){animation-delay:0.4s}
+  @keyframes dotBounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+  .chat-input-row{display:flex;padding:0.75rem;border-top:1px solid var(--pale);gap:8px}
+  .chat-input-row input{flex:1;border:1px solid rgba(193,52,74,0.2);border-radius:100px;padding:0.5rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none}
+  .chat-input-row input:focus{border-color:var(--rose)}
+  .chat-send{background:var(--rose);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1rem;flex-shrink:0}
+
+  /* JOURNEY TRACKER */
+  .journey-section{background:#fff;padding:4rem 5%;border-top:1px solid var(--pale)}
+  .journey-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .journey-card{background:var(--pale);border-radius:20px;padding:1.75rem;border:1px solid rgba(193,52,74,0.1)}
+  .journey-card h4{font-size:1rem;font-weight:500;margin-bottom:1rem;color:var(--ink)}
+  .journey-input-group{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem}
+  .journey-input-group input{border:1px solid rgba(193,52,74,0.2);border-radius:10px;padding:0.6rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;background:#fff;outline:none}
+  .journey-input-group input:focus{border-color:var(--rose)}
+  .journey-status{display:none;background:var(--rose-light);border-radius:12px;padding:1rem;margin-top:1rem;font-size:0.85rem;color:var(--rose-dark)}
+  .journey-status.active{display:block}
+  .progress-bar{background:rgba(193,52,74,0.15);border-radius:100px;height:6px;margin-top:8px;overflow:hidden}
+  .progress-fill{background:var(--rose);height:100%;border-radius:100px;width:0%;transition:width 0.5s}
+
+  /* SHAKE SOS */
+  .shake-banner{background:var(--ink);color:#fff;padding:1rem 5%;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .shake-banner p{font-size:0.875rem;flex:1}
+  .shake-toggle{background:var(--rose);color:#fff;border:none;padding:0.4rem 1rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;font-weight:500;white-space:nowrap}
+  .shake-indicator{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;opacity:0.7}
+  .shake-dot{width:8px;height:8px;border-radius:50%;background:#6B5B65}
+  .shake-dot.on{background:#4ade80;animation:pulse 1s infinite}
+
+  /* OFFLINE BADGE */
+  .offline-bar{background:#1e3a2f;color:#4ade80;padding:0.5rem 5%;font-size:0.8rem;display:none;align-items:center;gap:8px}
+  .offline-bar.show{display:flex}
+
+  @media(max-width:768px){
+    .hero{grid-template-columns:1fr;gap:2rem;padding:3rem 5%}
+    .tips-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .chat-window{width:calc(100vw - 2rem);right:1rem}
+    .journey-inner{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- OFFLINE BAR -->
+<div class="offline-bar" id="offline-bar">
+  <span>⚡</span> You're offline — SOS, contacts, and shake detection still work.
+</div>
+
+<!-- SHAKE BANNER -->
+<div class="shake-banner">
+  <span>📳</span>
+  <p>Shake-to-SOS: shake your phone hard 3× to trigger a loud alarm + emergency alert</p>
+  <div class="shake-indicator"><div class="shake-dot" id="shake-dot"></div><span id="shake-status">off</span></div>
+  <button class="shake-toggle" id="shake-btn" onclick="toggleShake()">Enable</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="sos-modal">
+  <div class="modal">
+    <div style="font-size:3rem;margin-bottom:0.5rem">🚨</div>
+    <h2>SOS Alert Sent</h2>
+    <p>Your location has been shared with your emergency contacts. Help is on the way. Stay calm and stay safe.</p>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="callPolice()">Call 112 Now</button>
+      <button class="modal-close" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Safe<span>Her</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#helplines">Helplines</a></li>
+    <li><a href="#tips">Safety Tips</a></li>
+  </ul>
+  <button class="nav-sos" onclick="triggerSOS()">SOS</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-tag">Women Safety Platform</div>
+    <h1>Your safety is our <em>priority</em></h1>
+    <p class="hero-sub">Instant emergency alerts, trusted helplines, and safety tools — all in one place. Because every woman deserves to feel safe.</p>
+    <div class="hero-btns">
+      <a href="#features" class="btn-primary">Explore Features</a>
+      <a href="#helplines" class="btn-ghost">Helplines</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <button class="sos-big" onclick="triggerSOS()">SOS</button>
+    <p class="sos-label">Press to send emergency alert to contacts</p>
+    <div class="quick-contacts">
+      <h4>Trusted Contacts</h4>
+      <div class="contact-row">
+        <div class="contact-avatar">👩</div>
+        <span class="contact-name">Mom</span>
+        <button class="contact-call">Call</button>
+      </div>
+      <div class="contact-row">
+        <div class="contact-avatar">👫</div>
+        <span class="contact-name">Best Friend</span>
+        <button class="contact-call">Call</button>
+      </div>
+      <div class="contact-row">
+        <div class="contact-avatar">👮</div>
+        <span class="contact-name">Local Police</span>
+        <button class="contact-call">Call</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section" id="features">
+  <div class="section-label">What we offer</div>
+  <div class="section-title">Tools built for your protection</div>
+  <p class="section-sub">From real-time location sharing to anonymous reporting — every feature designed to keep women safer.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon">📍</div>
+      <div class="feat-title">Live Location Sharing</div>
+      <p class="feat-desc">Share your real-time location with trusted contacts while traveling alone. Auto-expires when you're safe.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">🔔</div>
+      <div class="feat-title">One-Tap SOS Alert</div>
+      <p class="feat-desc">Send instant SOS with location to up to 5 emergency contacts and nearby police stations.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">🎙️</div>
+      <div class="feat-title">Voice Activation</div>
+      <p class="feat-desc">Trigger an SOS by saying a secret keyword — no need to touch your phone in an emergency.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">🗺️</div>
+      <div class="feat-title">Safe Route Planner</div>
+      <p class="feat-desc">Get routes that avoid known unsafe areas and late-night hotspots based on community reports.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">📝</div>
+      <div class="feat-title">Anonymous Reporting</div>
+      <p class="feat-desc">Report incidents anonymously to help build a safer map for other women in your area.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">🤝</div>
+      <div class="feat-title">Community Support</div>
+      <p class="feat-desc">Connect with a verified support network. Find shelters, counselors, and legal aid near you.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HELPLINES -->
+<div class="helpline-section" id="helplines">
+  <div class="helpline-inner">
+    <div class="section-label">Emergency Contacts</div>
+    <div class="section-title">Helplines & Support</div>
+    <div class="helpline-grid">
+      <div class="helpline-card">
+        <div>
+          <div class="helpline-num">112</div>
+        </div>
+        <div class="helpline-info">
+          <h5>Emergency Services</h5>
+          <p>Police / Ambulance / Fire</p>
+        </div>
+        <button class="call-btn" onclick="alert('Calling 112...')">Call</button>
+      </div>
+      <div class="helpline-card">
+        <div>
+          <div class="helpline-num">1091</div>
+        </div>
+        <div class="helpline-info">
+          <h5>Women Helpline</h5>
+          <p>24/7 National Women Helpline</p>
+        </div>
+        <button class="call-btn" onclick="alert('Calling 1091...')">Call</button>
+      </div>
+      <div class="helpline-card">
+        <div>
+          <div class="helpline-num">181</div>
+        </div>
+        <div class="helpline-info">
+          <h5>Abhayam Helpline</h5>
+          <p>Women in distress</p>
+        </div>
+        <button class="call-btn" onclick="alert('Calling 181...')">Call</button>
+      </div>
+      <div class="helpline-card">
+        <div>
+          <div class="helpline-num">7827</div>
+        </div>
+        <div class="helpline-info">
+          <h5>iCall Helpline</h5>
+          <p>Mental health support</p>
+        </div>
+        <button class="call-btn" onclick="alert('Calling iCall...')">Call</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="section" id="tips">
+  <div class="section-label">Stay Prepared</div>
+  <div class="section-title">Safety Tips</div>
+  <div class="tips-grid">
+    <div>
+      <div class="tip-item">
+        <div class="tip-num">01</div>
+        <div class="tip-text"><h5>Share your location</h5><p>Always share your live location with a trusted person when traveling alone at night.</p></div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">02</div>
+        <div class="tip-text"><h5>Stay aware of surroundings</h5><p>Avoid wearing headphones in both ears and keep your phone accessible but not visible.</p></div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">03</div>
+        <div class="tip-text"><h5>Trust your instincts</h5><p>If something feels wrong, leave the situation immediately. Your gut feeling matters.</p></div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">04</div>
+        <div class="tip-text"><h5>Have a code word</h5><p>Set up a distress code word with family or friends that signals you need help urgently.</p></div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">05</div>
+        <div class="tip-text"><h5>Keep phone charged</h5><p>Carry a power bank. A dead phone in an emergency can be dangerous.</p></div>
+      </div>
+    </div>
+    <div class="tips-visual">
+      <h3>You are never alone</h3>
+      <p>SafeHer is here with you every step of the way — whether you need an emergency alert, a safe route home, or someone to talk to.</p>
+      <div class="tips-stat">
+        <div class="stat-item"><div class="num">50K+</div><div class="lbl">Women Protected</div></div>
+        <div class="stat-item"><div class="num">24/7</div><div class="lbl">Always Available</div></div>
+        <div class="stat-item"><div class="num">100%</div><div class="lbl">Free to Use</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOURNEY TRACKER -->
+<div class="journey-section" id="journey">
+  <div class="journey-inner">
+    <div>
+      <div class="section-label">Journey Tracker</div>
+      <div class="section-title">Share your trip, <em style="font-family:'DM Serif Display',serif;color:var(--rose)">stay connected</em></div>
+      <p class="section-sub">Start a trip and your trusted contacts get notified. If you don't arrive in time, they get an automatic alert with your last location.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+        <li style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:var(--muted)"><span style="color:var(--rose);font-size:1.2rem">✓</span> Real-time location link sent to contacts</li>
+        <li style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:var(--muted)"><span style="color:var(--rose);font-size:1.2rem">✓</span> Auto-alert if you don't arrive on time</li>
+        <li style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:var(--muted)"><span style="color:var(--rose);font-size:1.2rem">✓</span> Works offline with last known location</li>
+      </ul>
+    </div>
+    <div class="journey-card">
+      <h4>🗺️ Start a journey</h4>
+      <div class="journey-input-group">
+        <input type="text" id="j-from" placeholder="Current location (e.g. Home)" />
+        <input type="text" id="j-to" placeholder="Destination (e.g. Office)" />
+        <input type="number" id="j-eta" placeholder="ETA in minutes (e.g. 30)" min="1" max="480" />
+        <input type="text" id="j-contact" placeholder="Notify contact (e.g. Mom)" />
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="startJourney()">Start Journey Tracking</button>
+      <div class="journey-status" id="journey-status">
+        <strong>🟢 Journey active</strong><br/>
+        <span id="journey-desc"></span>
+        <div class="progress-bar"><div class="progress-fill" id="journey-progress"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.75rem;opacity:0.7">
+          <span id="j-elapsed">0 min elapsed</span><span id="j-remaining"></span>
+        </div>
+        <button onclick="endJourney()" style="margin-top:10px;background:var(--rose);color:#fff;border:none;padding:0.4rem 1rem;border-radius:100px;font-size:0.8rem;cursor:pointer;font-family:'DM Sans',sans-serif">I've arrived safely ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT FAB -->
+<button class="chat-fab" onclick="toggleChat()" title="Chat with SafeHer AI">💬</button>
+<div class="chat-window" id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">🛡️</div>
+    <div class="chat-header-info">
+      <h4>SafeHer AI</h4>
+      <p>Powered by Gemini · 24/7</p>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg bot">Hi 👋 I'm your SafeHer assistant, powered by Gemini AI. I'm here 24/7 for safety advice, emotional support, or emergency help. How can I help you today?</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendChat()" />
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">SafeHer</div>
+  <p>Built with care for every woman's safety. In an emergency, always call 112.</p>
+</footer>
+
+<script>
+  // ── SOS ──
+  function triggerSOS(){document.getElementById('sos-modal').classList.add('open');playAlarm();}
+  function closeModal(){document.getElementById('sos-modal').classList.remove('open');stopAlarm();}
+  function callPolice(){alert('Connecting to emergency services — 112');closeModal();}
+  document.getElementById('sos-modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+  // ── ALARM ──
+  let alarmCtx=null,alarmNodes=[];
+  function playAlarm(){
+    try{
+      alarmCtx=new(window.AudioContext||window.webkitAudioContext)();
+      function beep(t){
+        const o=alarmCtx.createOscillator(),g=alarmCtx.createGain();
+        o.connect(g);g.connect(alarmCtx.destination);
+        o.frequency.value=880;o.type='square';
+        g.gain.setValueAtTime(0.6,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.3);
+        o.start(t);o.stop(t+0.35);alarmNodes.push(o);
+      }
+      for(let i=0;i<20;i++) beep(alarmCtx.currentTime+i*0.5);
+    }catch(e){}
+  }
+  function stopAlarm(){
+    if(alarmCtx){alarmNodes.forEach(n=>{try{n.stop();}catch(e){}});alarmCtx.close();alarmCtx=null;alarmNodes=[];}
+  }
+
+  // ── OFFLINE ──
+  function checkOnline(){document.getElementById('offline-bar').classList.toggle('show',!navigator.onLine);}
+  window.addEventListener('online',checkOnline);window.addEventListener('offline',checkOnline);checkOnline();
+
+  // ── SHAKE TO SOS ──
+  let shakeEnabled=false,lastShake=0,shakeCount=0,shakeTimer=null;
+  function toggleShake(){
+    shakeEnabled=!shakeEnabled;
+    document.getElementById('shake-dot').classList.toggle('on',shakeEnabled);
+    document.getElementById('shake-status').textContent=shakeEnabled?'on':'off';
+    document.getElementById('shake-btn').textContent=shakeEnabled?'Disable':'Enable';
+    if(shakeEnabled&&typeof DeviceMotionEvent!=='undefined'){
+      if(typeof DeviceMotionEvent.requestPermission==='function'){
+        DeviceMotionEvent.requestPermission().then(r=>{if(r==='granted')window.addEventListener('devicemotion',onShake);}).catch(()=>{});
+      } else {
+        window.addEventListener('devicemotion',onShake);
+      }
+    } else {
+      window.removeEventListener('devicemotion',onShake);
+    }
+  }
+  function onShake(e){
+    if(!shakeEnabled)return;
+    const a=e.acceleration;if(!a)return;
+    const mag=Math.sqrt((a.x||0)**2+(a.y||0)**2+(a.z||0)**2);
+    if(mag>20){
+      const now=Date.now();
+      if(now-lastShake>400){shakeCount++;lastShake=now;clearTimeout(shakeTimer);shakeTimer=setTimeout(()=>shakeCount=0,2000);}
+      if(shakeCount>=3){shakeCount=0;triggerSOS();}
+    }
+  }
+
+  // ── JOURNEY TRACKER ──
+  let journeyInterval=null,journeyStartTime=null,journeyETA=0;
+  function startJourney(){
+    const from=document.getElementById('j-from').value.trim();
+    const to=document.getElementById('j-to').value.trim();
+    const eta=parseInt(document.getElementById('j-eta').value)||30;
+    const contact=document.getElementById('j-contact').value.trim()||'your contact';
+    if(!to){alert('Please enter a destination');return;}
+    journeyETA=eta*60;journeyStartTime=Date.now();
+    document.getElementById('journey-desc').textContent=`${from||'Current location'} → ${to} · ${contact} notified`;
+    document.getElementById('journey-status').classList.add('active');
+    document.getElementById('j-remaining').textContent=`${eta} min remaining`;
+    clearInterval(journeyInterval);
+    journeyInterval=setInterval(()=>{
+      const elapsed=Math.floor((Date.now()-journeyStartTime)/1000);
+      const pct=Math.min(100,Math.round(elapsed/journeyETA*100));
+      document.getElementById('journey-progress').style.width=pct+'%';
+      document.getElementById('j-elapsed').textContent=Math.floor(elapsed/60)+' min elapsed';
+      const rem=Math.max(0,Math.ceil((journeyETA-elapsed)/60));
+      document.getElementById('j-remaining').textContent=rem+' min remaining';
+      if(elapsed>=journeyETA){clearInterval(journeyInterval);document.getElementById('journey-desc').textContent='⚠️ ETA passed! Sending alert to '+contact+'...';}
+    },1000);
+  }
+  function endJourney(){
+    clearInterval(journeyInterval);
+    document.getElementById('journey-status').classList.remove('active');
+    ['j-from','j-to','j-eta','j-contact'].forEach(id=>document.getElementById(id).value='');
+    alert('Great! Your contact has been notified that you arrived safely. 💚');
+  }
+
+  // ── AI CHATBOT (via Netlify Function — key stays server-side) ──
+  let chatOpen=false;
+  const chatHistory=[];
+
+  function toggleChat(){
+    chatOpen=!chatOpen;
+    document.getElementById('chat-window').classList.toggle('open',chatOpen);
+    if(chatOpen) document.getElementById('chat-input').focus();
+  }
+
+  const safetyResponses={
+    'help':'I\'m here for you. Can you tell me more about what\'s happening? Are you in immediate danger right now?',
+    'unsafe':'Your safety is the priority. If you feel in immediate danger, press the SOS button or call 112 right now. Can you move to a safer place?',
+    'scared':'It\'s okay to feel scared. You\'re not alone. Take a slow breath. Are you safe where you are right now?',
+    'alone':'You\'re not alone — I\'m here with you. Would you like me to help you contact someone or find nearby help?',
+    'follow':'Trust your instincts. Try to move toward a public, crowded place. If possible, call someone and let them know where you are.',
+    'harass':'I\'m so sorry that\'s happening. Document it if you can. You have the right to report this to the police. Would you like guidance on how to file a report?',
+    'police':'You can call 112 for police assistance. For women-specific support, call 1091. Would you like me to guide you through what to say?',
+    'safe':'I\'m so glad you\'re safe 💚 Remember, you can always reach out here anytime. Is there anything else I can help you with?',
+    'thank':'You\'re welcome. Please stay safe and don\'t hesitate to reach out anytime. You\'re stronger than you know 💪',
+  };
+
+  async function sendChat(){
+    const input=document.getElementById('chat-input');
+    const text=input.value.trim(); if(!text) return;
+    input.value='';
+    appendMsg(text,'user');
+    chatHistory.push({role:'user', parts:[{text}]});
+    const typing=appendTyping();
+    let reply=null;
+    try{
+      const res=await fetch('/.netlify/functions/chat',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({history:chatHistory})
+      });
+      const data=await res.json();
+      if(data.error) throw new Error(data.error);
+      reply=data.reply;
+      chatHistory.push({role:'model', parts:[{text:reply}]});
+    }catch(e){
+      const lower=text.toLowerCase();
+      for(const [key,response] of Object.entries(safetyResponses)){
+        if(lower.includes(key)){reply=response;break;}
+      }
+      if(!reply) reply='I\'m here for you 💙 If you\'re in danger, press SOS or call 112 immediately.';
+    }
+    typing.remove();
+    appendMsg(reply,'bot');
+  }
+
+  function appendMsg(text,role){
+    const msgs=document.getElementById('chat-messages');
+    const div=document.createElement('div'); div.className='msg '+role; div.textContent=text;
+    msgs.appendChild(div); msgs.scrollTop=msgs.scrollHeight; return div;
+  }
+  function appendTyping(){
+    const msgs=document.getElementById('chat-messages');
+    const div=document.createElement('div'); div.className='msg typing';
+    div.innerHTML='<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+    msgs.appendChild(div); msgs.scrollTop=msgs.scrollHeight; return div;
+  }
+
+  // ── SMOOTH SCROLL ──
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{e.preventDefault();const el=document.querySelector(a.getAttribute('href'));if(el)el.scrollIntoView({behavior:'smooth'});});
+  });
+
+  // ── STAGGER CARDS ──
+  const cards=document.querySelectorAll('.feature-card');
+  cards.forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(20px)';c.style.transition=`all 0.4s ${i*0.08}s`});
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});},{threshold:0.15});
+  cards.forEach(c=>obs.observe(c));
+</script>
+</body>
+</html>
