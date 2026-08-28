@@ -7,7 +7,7 @@
 
 ---
 
-## ✨ Features
+## ✨ Features 
 
 ### 🚨 One-Tap SOS Alert
 Press the pulsing SOS button to instantly trigger a loud alarm and send an emergency alert. Notifies your trusted contacts with your location.
