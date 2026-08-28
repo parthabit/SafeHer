@@ -51,7 +51,6 @@ Core features — SOS alarm, trusted contacts, shake detection — work without 
 | CI/CD | GitHub → Netlify auto-deploy |
 | Storage | Browser `localStorage` (contacts, journey state) |
 
-
 ---
 
 ## 🚀 Deployment
@@ -138,4 +137,4 @@ SafeHer is a safety awareness tool. In a real emergency, always call **112** fir
 
 ---
 
-*"You are never alone."* — SafeHer
+*"You are never alone."* —-SafeHer
