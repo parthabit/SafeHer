@@ -1,7 +1,7 @@
 # 🛡️ SafeHer — Women Safety Platform
 
 > **Your safety is our priority.**  
-> Instant emergency alerts, trusted helplines, AI support, and safety tools — all in one place. Because every woman deserves to feel safe.
+> Instant emergency alerts, trusted helplines, AI support, and safety tools — all in one place. Because every woman deserves to feel safe
 
 🌐 **Live Site:** [safeher-official.netlify.app](https://safeher-official.netlify.app)
 
