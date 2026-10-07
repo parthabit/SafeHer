@@ -4,9 +4,6 @@
 > Instant emergency alerts, trusted helplines, AI support, and safety tools — all in one place. Because every woman deserves to feel safe
 
 
-
---
-
 ## ✨ Features 
 
 ### 🚨 One-Tap SOS Alert
